@@ -1,6 +1,12 @@
+
+function(write_if_not_exist subdir file text)
+    if (NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${subdir}/${file})
+        file(WRITE ${subdir}/${file} ${text})
+    endif()
+endfunction()
+
 function(create_cmake_lists subdir)
-    if (NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${subdir}/CMakeLists.txt)
-        file(WRITE ${subdir}/CMakeLists.txt 
+    write_if_not_exist(${subdir} CMakeLists.txt 
 "set(TARGET ${subdir})
 
 set(SOURCES
@@ -13,8 +19,7 @@ target_sources($\{TARGET\}
     PRIVATE
         $\{SOURCES\}
 )"
-        )
-    endif()
+    )
 endfunction()
 
 
