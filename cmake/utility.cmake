@@ -5,6 +5,16 @@ function(write_if_not_exist subdir file text)
     endif()
 endfunction()
 
+function(create_main subdir)
+    write_if_not_exist(${subdir} main.cpp
+"int main(int argc, char* argv[])
+\{
+
+    return 0;
+\}"
+    )
+endfunction()
+
 function(create_cmake_lists subdir)
     write_if_not_exist(${subdir} CMakeLists.txt 
 "set(TARGET ${subdir})
@@ -25,5 +35,6 @@ endfunction()
 
 function(add_subdir subdir)
     create_cmake_lists(${subdir})
+    create_main(${subdir})
     add_subdirectory(${subdir})
 endfunction()
