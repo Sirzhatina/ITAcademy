@@ -21,4 +21,4 @@ if (NOT DEFINED FACTORIAL_USED_TYPE)
     set(FACTORIAL_USED_TYPE int)
 endif()
 
-target_compile_definitions(${TARGET} PRIVATE FACTORIAL_USED_TYPE=int)
+target_compile_definitions(${TARGET} PRIVATE FACTORIAL_USED_TYPE=${FACTORIAL_USED_TYPE})
