@@ -8,3 +8,10 @@ FACTORIAL_USED_TYPE factorial(FACTORIAL_USED_TYPE n) {
     }
     return result;
 }
+
+FACTORIAL_USED_TYPE factRecurse(FACTORIAL_USED_TYPE n) {
+    if (n < 1) {
+        return 1;
+    }
+    return n * factRecurse(n - 1);
+}

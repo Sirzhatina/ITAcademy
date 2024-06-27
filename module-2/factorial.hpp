@@ -1,3 +1,5 @@
 #pragma once
 
 FACTORIAL_USED_TYPE factorial(FACTORIAL_USED_TYPE n);
+
+FACTORIAL_USED_TYPE factRecurse(FACTORIAL_USED_TYPE n);
