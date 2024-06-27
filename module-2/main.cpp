@@ -4,6 +4,9 @@
 
 #include <os_compiler.h>
 
+#include "compiler_info.hpp"
+#include "os_info.hpp"
+
 int main(int argc, char* argv[])
 {
     std::cout 
@@ -18,6 +21,9 @@ int main(int argc, char* argv[])
         COMPILER_NAME,
         COMPILER_VERSION
     );
-
+    std::cout << std::endl;
+    
+    osInfo();
+    compilerInfo();
     return 0;
 }
