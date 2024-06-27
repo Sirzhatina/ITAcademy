@@ -22,3 +22,6 @@ if (NOT DEFINED FACTORIAL_USED_TYPE)
 endif()
 
 target_compile_definitions(${TARGET} PRIVATE FACTORIAL_USED_TYPE=${FACTORIAL_USED_TYPE})
+
+configure_file(os_compiler.h.in os_compiler.h)
+target_include_directories(${TARGET} PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/)
