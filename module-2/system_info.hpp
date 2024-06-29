@@ -43,6 +43,14 @@ public:
         return SystemInfo{osName, compilerName, compilerVersion};
     }
 
+    static SystemInfo makeSystemInfoFromCustomSource(
+        const char* osName, 
+        const char* compilerName, 
+        const char* compilerVersion
+    ) {
+        return SystemInfo{osName, compilerName, compilerVersion};
+    }
+
     friend std::ostream& operator<<(std::ostream& os, const SystemInfo& sys) {
         return os << std::format(
             "OS name: {}\n"
