@@ -44,6 +44,18 @@ public:
 
         return SystemInfo{osName, compilerName, compilerVersion};
     }
+
+    friend std::ostream& operator<<(std::ostream& os, const SystemInfo& sys) {
+        return os << std::format(
+            "OS name: {}\n"
+            "Compiler name: {}\n"
+            "Compiler version: {}\n",
+            sys.m_osName,
+            sys.m_compilerName,
+            sys.m_compilerVersion
+        ) << std::endl;
+    }
+
 private:
 
     SystemInfo(std::string osName, std::string compilerName, std::string compilerVersion)
