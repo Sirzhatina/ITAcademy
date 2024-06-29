@@ -8,6 +8,7 @@ set(SOURCES
     os_info.cpp
     compiler_info.hpp
     compiler_info.cpp
+    system_info.hpp
 )
 
 add_executable(${TARGET})
@@ -15,9 +16,6 @@ add_executable(${TARGET})
 target_sources(${TARGET}
     PRIVATE
         ${SOURCES}
-    PRIVATE
-        FILE_SET CXX_MODULES FILES   
-            system_info.cppm
 )
 
 if (NOT DEFINED FACTORIAL_USED_TYPE)

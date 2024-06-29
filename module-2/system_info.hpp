@@ -1,13 +1,11 @@
-module;
+#pragma  once
 
 #include <string>
 #include <format>
 #include <ostream>
 #include <utility>
 
-export module system_info;
-
-export class SystemInfo {
+class SystemInfo {
 public:
     std::string getOsInfo() const noexcept { return m_osName; }
 
