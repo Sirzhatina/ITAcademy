@@ -20,5 +20,9 @@ endif()
 
 target_compile_definitions(${TARGET} PRIVATE FACTORIAL_USED_TYPE=${FACTORIAL_USED_TYPE})
 
+if (DEFINED RECURSIVE_FACTORIAL)
+    target_compile_definitions(${TARGET} PRIVATE RECURSIVE_FACTORIAL)
+endif()
+
 configure_file(os_compiler.h.in os_compiler.h)
 target_include_directories(${TARGET} PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/)
