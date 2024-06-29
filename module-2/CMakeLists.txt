@@ -4,10 +4,6 @@ set(SOURCES
     main.cpp
     factorial.hpp
     factorial.cpp
-    os_info.hpp
-    os_info.cpp
-    compiler_info.hpp
-    compiler_info.cpp
     system_info.hpp
 )
 

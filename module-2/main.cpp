@@ -3,9 +3,7 @@
 #include <format>
 
 #include <os_compiler.h>
-
-#include "compiler_info.hpp"
-#include "os_info.hpp"
+#include "system_info.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -13,17 +11,13 @@ int main(int argc, char* argv[])
         << std::format("Factorial of 5 is: {}", factorial(5))
         << std::endl;
 
-    std::cout
-        << std::format("OS: {}\n"
-        "Compiler: {}\n"
-        "Compiler version: {}",
+    std::cout << SystemInfo::makeSystemInfo();
+
+    std::cout << SystemInfo::makeSystemInfoFromCustomSource(
         OS_NAME, 
-        COMPILER_NAME,
+        COMPILER_NAME, 
         COMPILER_VERSION
     );
-    std::cout << std::endl;
-    
-    osInfo();
-    compilerInfo();
+
     return 0;
 }
