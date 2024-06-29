@@ -13,7 +13,9 @@ export module system_info;
 
 export class SystemInfo {
 public:
+    std::string getOsInfo() const noexcept { return m_osName; }
 
+    std::string getCompilerVersion() { return m_compilerVersion; }
 
 private:
     std::string m_osName;
