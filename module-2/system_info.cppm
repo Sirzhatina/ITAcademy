@@ -1,16 +1,11 @@
 module;
 
 #include <string>
-#include <optional>
 #include <format>
 #include <ostream>
 #include <utility>
 
 export module system_info;
-
-#define SYSTEM_INFO_FIELDS \
-
-
 
 export class SystemInfo {
 public:
