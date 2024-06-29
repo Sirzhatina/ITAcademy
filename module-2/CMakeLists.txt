@@ -5,6 +5,7 @@ set(SOURCES
     factorial.hpp
     factorial.cpp
     system_info.hpp
+    system_info.cpp
 )
 
 add_executable(${TARGET})
