@@ -12,7 +12,7 @@ SystemInfo::SystemInfo(std::string osName, std::string compilerName, std::string
 
 std::string SystemInfo::getOsInfo() const noexcept { return m_osName; }
 
-std::string SystemInfo::getCompilerVersion() { return m_compilerVersion; }
+std::string SystemInfo::getCompilerVersion() const noexcept { return m_compilerVersion; }
 
 SystemInfo SystemInfo::makeSystemInfo() {
     std::string osName = 
