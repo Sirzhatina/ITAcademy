@@ -2,7 +2,6 @@
 
 #include <string>
 #include <ostream>
-#include <utility>
 
 class SystemInfo {
 public:
@@ -22,8 +21,6 @@ public:
 private:
 
     SystemInfo(std::string osName, std::string compilerName, std::string compilerVersion);
-
-    static std::pair<std::string, std::string> parseCompilerInfo(const std::string compInfo);
 
 private:
 
