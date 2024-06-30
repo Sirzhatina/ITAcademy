@@ -55,14 +55,3 @@ SystemInfo SystemInfo::makeSystemInfoFromCustomSource(
 ) {
     return SystemInfo{osName, compilerName, compilerVersion};
 }
-
-std::ostream& operator<<(std::ostream& os, const SystemInfo& sys) {
-    return os << std::format(
-        "OS name: {}\n"
-        "Compiler name: {}\n"
-        "Compiler version: {}\n",
-        sys.m_osName,
-        sys.m_compilerName,
-        sys.m_compilerVersion
-    ) << std::endl;
-}

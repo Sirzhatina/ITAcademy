@@ -1,7 +1,6 @@
 #pragma  once
 
 #include <string>
-#include <ostream>
 
 class SystemInfo {
 public:
@@ -16,7 +15,6 @@ public:
         const char* compilerName, 
         const char* compilerVersion
     );
-    friend std::ostream& operator<<(std::ostream& os, const SystemInfo& sys);
 
 private:
 
