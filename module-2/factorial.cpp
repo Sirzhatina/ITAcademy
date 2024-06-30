@@ -8,12 +8,12 @@ FACTORIAL_USED_TYPE factorial(FACTORIAL_USED_TYPE n) {
     }
 
 #ifdef RECURSIVE_FACTORIAL
-    if (n < 1) {
+    if (n <= 1) {
         return 1;
     }
     return n * factorial(n - 1);
 #else
-    for (auto i{n}; i > 1; i--) {
+    for (auto i{n}; i > 1; --i) {
         result *= i;
     }
     return result;

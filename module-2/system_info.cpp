@@ -1,5 +1,5 @@
 #include "system_info.hpp"
-#include <format>
+
 
 SystemInfo::SystemInfo(std::string osName, std::string compilerName, std::string compilerVersion)
 : m_osName{std::move(osName)}
