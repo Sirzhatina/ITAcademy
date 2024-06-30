@@ -1,11 +1,13 @@
-#include "factorial.hpp"
 #include <charconv>
 #include <cstdlib>
 #include <iostream>
 #include <format>
+#include <stdexcept>
+#include <system_error>
 
 #include <os_compiler.h>
-#include <system_error>
+
+#include "factorial.hpp"
 #include "system_info.hpp"
 
 int main(int argc, char* argv[])
@@ -21,9 +23,14 @@ int main(int argc, char* argv[])
         std::cerr << "Number given is not valid!";
         return EXIT_FAILURE;
     }
-    std::cout 
-        << std::format("Factorial of {} is: {}\n", value, factorial(value))
-        << std::endl;
+    try {
+        std::cout 
+            << std::format("Factorial of {} is: {}\n", value, factorial(value))
+            << std::endl;
+    } catch (const std::logic_error& le) {
+        std::cerr << le.what() << '\n';
+        return EXIT_FAILURE;
+    }
 
     std::cout << SystemInfo::makeSystemInfo();
 
