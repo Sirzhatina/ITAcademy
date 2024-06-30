@@ -14,14 +14,6 @@ public:
     std::string getOsName() const noexcept;
     std::string getCompilerName() const noexcept;
     std::string getCompilerVersion() const noexcept;
-    /**
-     * @brief Creates new system info instance with data retrieved from the compiler
-     * at preprocessing stage
-     * @throw Same as std::format used internally
-     * @return SystemInfo 
-     */
-    static SystemInfo makeSystemInfo();
-
 private:
 
     std::string m_osName;

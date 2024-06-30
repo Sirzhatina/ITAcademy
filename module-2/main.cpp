@@ -13,6 +13,13 @@
 void factorialTask(int argc, char* argv[]);
 
 void printSystemInfo(const SystemInfo& sys);
+/**
+    * @brief Creates new system info instance with data retrieved from the compiler
+    * at preprocessing stage
+    * @throw Same as std::format used internally
+    * @return SystemInfo 
+    */
+SystemInfo makeSystemInfo();
 
 int main(int argc, char* argv[])
 {
@@ -22,7 +29,7 @@ int main(int argc, char* argv[])
     }
     factorialTask(argc, argv);
 
-    printSystemInfo(SystemInfo::makeSystemInfo());
+    printSystemInfo(makeSystemInfo());
     printSystemInfo(SystemInfo{
         OS_NAME,
         COMPILER_NAME,
@@ -59,4 +66,38 @@ void printSystemInfo(const SystemInfo& sys) {
         sys.getCompilerName(),
         sys.getCompilerVersion()
     ) << std::endl;
+}
+
+SystemInfo makeSystemInfo() {
+    std::string osName = 
+#ifdef __linux__
+    "Linux"
+#elif _WIN32
+    "Windows"
+#elif __APPLE__
+    "Apple";
+#elif __FreeBSD__
+    "FreeBSD"
+#elif __ANDROID__
+    "Android"
+#else
+    "Unknown"
+#endif 
+    ; 
+    
+#ifdef __GNUC__
+    auto compilerName = "GCC";
+    auto compilerVersion = std::format("{}.{}.{}", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
+#elif __clang__
+    auto compilerName = "Clang";
+    auto compilerVersion = std::format("{}.{}.{}", __clang_major__, __clang_minor__, __clang_patchlevel__);
+#elif _MSC_VER
+    auto compilerName = "MSVC";
+    auto compilerVersion = std::format("{}", _MSC_VER);
+#else
+    auto compilerName = "Unknown";
+    auto compilerVersion = "";
+#endif
+
+    return SystemInfo{osName, compilerName, compilerVersion};
 }
