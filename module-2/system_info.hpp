@@ -5,8 +5,8 @@
 
 class SystemInfo {
 public:
-    std::string getOsInfo() const noexcept;
-
+    std::string getOsName() const noexcept;
+    std::string getCompilerName() const noexcept;
     std::string getCompilerVersion() const noexcept;
 
     static SystemInfo makeSystemInfo();
