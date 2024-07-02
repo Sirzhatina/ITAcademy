@@ -10,3 +10,4 @@ include(cmake/utility.cmake)
 
 add_subdir(module-1)
 add_subdir(module-2)
+add_subdir(module-3)
