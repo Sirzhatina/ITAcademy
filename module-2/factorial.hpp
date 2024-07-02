@@ -1,0 +1,3 @@
+#pragma once
+
+FACTORIAL_USED_TYPE factorial(FACTORIAL_USED_TYPE n);

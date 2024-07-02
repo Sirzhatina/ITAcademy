@@ -10,7 +10,7 @@ function(create_main subdir)
 "int main(int argc, char* argv[])
 \{
 
-    return 0;
+    return 0\;
 \}"
     )
 endfunction()
