@@ -1,7 +1,7 @@
 .vscode/
 .vs/
 .cache/
-
+out/
 [Bb]uild/
 
 CMakeUserPresets.json
