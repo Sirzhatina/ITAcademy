@@ -13,37 +13,40 @@ Game::Game(std::size_t rounds, std::int16_t scoresTowin)
 }
 
 void Game::mainLoop() {
-    for (std::size_t i = 0; i < m_numberOfRounds; ++i) {
+    std::size_t roundsPlayed = 0;
+    for (; roundsPlayed < m_numberOfRounds; ++roundsPlayed) {
         m_first.addScores(m_generateNumber());
         m_second.addScores(m_generateNumber());
 
         if (isDraw()) {
             declareDraw();
-            return;
+            break;
         }
         else if (hasPlayerReachedScores(m_first)) {
             declareVictory(m_first);
-            return;
+            break;
         }
         else if (hasPlayerReachedScores(m_second)) {
             declareVictory(m_second);
-            return;
+            break;
         }
 
-        if (i % 20 == 0) {
+        if (roundsPlayed % 20 == 0) {
             std::cout 
                 << std::format(
                     "Current round is: {}\n"
-                    "Player 1 scores: {}\n"
-                    "Player 2 scores: {}", 
-                    i,
+                    "\tPlayer 1 scores: {}\n"
+                    "\tPlayer 2 scores: {}", 
+                    roundsPlayed + 1,
                     m_first.getScores(),
                     m_second.getScores()
                 ) << std::endl;
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
-    runOutOfRounds();
+    if (roundsPlayed >= m_numberOfRounds) {
+        runOutOfRounds();
+    }
 }
 
 bool Game::hasPlayerReachedScores(const Player& pl) const {
