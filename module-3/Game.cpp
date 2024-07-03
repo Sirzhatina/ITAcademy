@@ -37,7 +37,7 @@ void Game::mainLoop() {
                     "Current round is: {}\n"
                     "\tPlayer 1 scores: {}\n"
                     "\tPlayer 2 scores: {}", 
-                    roundsPlayed + 1,
+                    roundsPlayed,
                     m_first.getScores(),
                     m_second.getScores()
                 ) << std::endl;
