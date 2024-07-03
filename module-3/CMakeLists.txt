@@ -6,6 +6,8 @@ set(SOURCES
     table.cpp
     number_parser.h
     number_parser.cpp
+    Game.h
+    Game.cpp
 )
 
 add_executable(${TARGET})
