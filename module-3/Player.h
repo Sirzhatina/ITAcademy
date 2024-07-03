@@ -5,15 +5,12 @@
 
 class Player {
 public:
-    Player()
-    // decided to avoid id 0, let players be counted from 1
-    : m_playerId{++id_counter}
-    {}
+    Player();
 
-    std::int16_t getScores() const { return m_scores; }
-    void addScores(std::int16_t scores) { m_scores += scores; }
+    void addScores(std::int16_t scores);
 
-    std::size_t getId() const { return m_playerId; }
+    std::int16_t getScores() const;
+    std::size_t getId() const;
 
 private:
     std::int16_t m_scores = 0;
