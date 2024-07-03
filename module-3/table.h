@@ -11,11 +11,11 @@ void mainTableTask();
 /// incremented
 /// @param upperBound - value to which lowerBound operand will exclusively be incrementing
 /// @param factor - second operand of the expressions, stays the same for all of them
-void printLine(int lowerBound, int upperBound, int factor);
+void printLine(int lowerBound, const int upperBound, const int factor);
 
 /// @brief iteratively calls printLine() passing it its own arguments
 /// and incrementing factor for each call from 1 to 10
 /// @param lowerBound - parameter passed for internally called printLine()
 /// and serving the same purpose as for that function
 /// @param upperBound - same as lowerBound: internally passed for printLine()
-void printColumns(int lowerBound, int upperBound);
+void printColumns(int lowerBound, const int upperBound);

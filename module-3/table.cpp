@@ -2,7 +2,7 @@
 #include <iostream>
 #include <format>
 
-void printLine(int lowerBound, int upperBound, int factor) {
+void printLine(int lowerBound, const int upperBound, const int factor) {
     while (lowerBound < upperBound) {
         std::cout
             << std::format("{} x {:2} = {:2}\t", lowerBound, factor, lowerBound * factor);
@@ -10,7 +10,7 @@ void printLine(int lowerBound, int upperBound, int factor) {
     }
 }
 
-void printColumns(int lowerBound, int upperBound) {
+void printColumns(int lowerBound, const int upperBound) {
     for (int i = 1; i <= 10; ++i) {
         printLine(lowerBound, upperBound, i);
         std::cout << '\n';
