@@ -27,7 +27,7 @@ public:
 private:
     std::int16_t m_scores = 0;
 
-    std::size_t m_playerId;
+    const std::size_t m_playerId;
 
     static inline std::size_t id_counter = 0;
 };
