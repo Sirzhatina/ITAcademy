@@ -2,7 +2,7 @@ set(TARGET module-4)
 
 set(SOURCES
     main.cpp
-    number_converter.hpp
+    number_converter.h
     number_converter.cpp
 )
 

@@ -1,4 +1,4 @@
-#include "number_converter.hpp"
+#include "number_converter.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -22,11 +22,11 @@ void NumberConverter::reset() { m_isSet = false; }
 
 void NumberConverter::printNumber(int number) const {
     std::cout << std::format(
-        "The number given: {}"
+        "The number given: {}\n"
         "Binary representation of this number: {}\n",
         number,
         AsBinary(number).to_string()
-    );
+    ) << std::endl;
 }
 
 int NumberConverter::convertValue() const {

@@ -1,4 +1,4 @@
-#include "number_converter.hpp"
+#include "number_converter.h"
 
 int main(int argc, char* argv[])
 {
