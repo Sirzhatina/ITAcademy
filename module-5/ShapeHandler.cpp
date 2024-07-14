@@ -8,7 +8,7 @@ sh::ShapeHandler::ShapeHandler(Shape sh)
     : m_shape{sh} { }
 
 sh::ShapeHandler::ShapeHandler(const std::string& shape) 
-    : m_shape{sh::toShape(shape)} { }
+    : ShapeHandler(sh::toShape(shape)) { }
 
 sh::Shape sh::ShapeHandler::asShape() const { 
     return m_shape; 
