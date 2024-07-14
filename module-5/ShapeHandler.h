@@ -20,9 +20,5 @@ public:
     
 private:
 
-    std::string toString(Shape sh) const;
-
-    Shape toShape(const std::string& sh);
-
     Shape m_shape = Shape::Unkown;
 };
