@@ -27,6 +27,6 @@ sh::Shape sh::toShape(const std::string& sh) {
     } else if (sh == "triangle") {
         return TRIANGLE;
     } else {
-        return Unkown;
+        return Unknown;
     }
 }

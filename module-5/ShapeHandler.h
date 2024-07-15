@@ -40,5 +40,5 @@ public:
     
 private:
 
-    Shape m_shape = Shape::Unkown;
+    Shape m_shape = Shape::Unknown;
 };

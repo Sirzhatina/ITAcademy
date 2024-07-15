@@ -9,7 +9,7 @@ namespace hw5::Shapes {
     /// Besides the shapes, enum contains default value to indicate
     /// unknown shape.
     enum class Shape {
-        Unkown = -1,
+        Unknown = -1,
         CIRCLE,
         SQUARE,
         TRIANGLE
