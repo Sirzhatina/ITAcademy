@@ -1,6 +1,7 @@
 #include "ShapeHandler.h"
 #include <iostream>
 #include <format>
+#include <type_traits>
 
 namespace sh = hw5::Shapes;
 
@@ -21,7 +22,9 @@ std::string sh::ShapeHandler::asString() const {
 void sh::ShapeHandler::printShape() const {
     std::cout
         << std::format(
-            "The shape passed: {}\n", 
-            sh::toString(m_shape)
+            "The shape passed: {}\n"
+            "Its numeric representation: {}\n",
+            this->asString(),
+            static_cast<std::underlying_type_t<Shape>>(this->asShape())
         ) << std::endl; 
 }
