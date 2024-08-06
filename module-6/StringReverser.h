@@ -1,7 +1,8 @@
 #pragma once
 
-#include <cstring>
-#include <algorithm>
+#include <cstddef>
+#include <ios>
+#include <source_location>
 
 namespace hw6 {
     class StringReverser;
@@ -32,4 +33,14 @@ public:
     /// @param outputStr - a c-style null-terminated string to print.
     /// if the passed string isn't null-terminated, the behavoiur is undefined.
     void printString(char* outputStr);
+
+private:
+
+
+    /// @brief method to check whether the passed I/O stream object 
+    /// is failed doing I/O operation or not. If the stream is in a fail state,
+    /// the method prints info to the error stream and stops the program immediately.
+    /// @param stream - object on which the method check if it's in a fail state or not.
+    /// @param loc - object to locate to the call site if the object is in a fail state.
+    void processStreamFailure(const std::ios& stream, std::source_location loc = std::source_location::current());
 };
