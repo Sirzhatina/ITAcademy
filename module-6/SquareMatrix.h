@@ -5,7 +5,7 @@
 
 class SquareMatrix {
 public:
-	SquareMatrix(std::size_t sz);
+	explicit SquareMatrix(std::size_t sz);
 
 	~SquareMatrix();
 

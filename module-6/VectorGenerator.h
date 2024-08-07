@@ -7,7 +7,7 @@
 
 class VectorGenerator {
 public:
-    VectorGenerator(std::size_t vecSize);
+    explicit VectorGenerator(std::size_t vecSize);
 
     void printVector(const std::string& msg);
 
