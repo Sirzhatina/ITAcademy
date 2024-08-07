@@ -8,8 +8,11 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include(cmake/utility.cmake)
 
-add_subdir(module-1)
-add_subdir(module-2)
-add_subdir(module-3)
-add_subdir(module-4)
-add_subdir(module-5)
+add_target_subdir(utility STATIC)
+
+add_target_subdir(module-1)
+add_target_subdir(module-2)
+add_target_subdir(module-3)
+add_target_subdir(module-4)
+add_target_subdir(module-5)
+add_target_subdir(module-6)
