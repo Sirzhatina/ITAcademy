@@ -4,6 +4,8 @@ set(SOURCES
     main.cpp
     StringReverser.h
     StringReverser.cpp
+    VectorGenerator.h
+    VectorGenerator.cpp
 )
 
 add_executable(${TARGET})

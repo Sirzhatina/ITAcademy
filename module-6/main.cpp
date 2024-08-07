@@ -1,49 +1,19 @@
 #include "StringReverser.h"
 #include <iostream>
 #include "utility/StreamChecker.h"
-#include <random>
-#include <vector>
-#include <algorithm>
+#include "VectorGenerator.h"
 
 void mainTask1();
-
-int makeValue() {
-    static auto rd = std::random_device{};
-    static auto mt = std::mt19937{ rd() };
-    static auto distr = std::uniform_int_distribution{ 1, 6 };
-
-    return distr(mt);
-}
-
-static StreamChecker strchk{};
-
-void printVector(const std::vector<int>& vec, const std::string& msg) {
-    std::cout << msg;
-    std::ranges::copy(vec, std::ostream_iterator<int>{ std::cout, " " });
-    std::cout << std::endl;
-    strchk.processStreamFailure(std::cout);
-}
-
+void mainTask2();
 
 int main(int argc, char* argv[])
 {
     mainTask1();
     std::cout << std::endl;
 
-    namespace rng = std::ranges;
+    mainTask2();
+    std::cout << std::endl;
 
-    std::size_t vectorSize = 0;
-    std::cout << "Input the size of the vector: ";
-    strchk.processStreamFailure(std::cout);
-    std::cin >> vectorSize;
-    strchk.processStreamFailure(std::cin);
-
-    std::vector<int> values(vectorSize);
-    rng::generate(values, makeValue);
-
-    printVector(values, "Vector unsorted: ");
-    rng::sort(values);
-    printVector(values, "Sorted vector: ");
     return 0;
 }
 
@@ -59,4 +29,22 @@ void mainTask1() {
     strRev.takeUserInput(infoString, DEFAULT_STRING_SIZE);
     strRev.reverseString(infoString);
     strRev.printString(infoString);
+}
+
+void mainTask2() {
+    StreamChecker strchk{};
+
+    std::size_t vectorSize = 0;
+    std::cout << "Input the size of the vector: ";
+    strchk.processStreamFailure(std::cout);
+    std::cin >> vectorSize;
+    strchk.processStreamFailure(std::cin);
+
+    VectorGenerator vg{ vectorSize };
+
+    vg.generate();
+
+    vg.printVector("Vector unsorted: ");
+    vg.sort();
+    vg.printVector("Sorted vector: ");
 }
