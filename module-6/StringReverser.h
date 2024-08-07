@@ -1,8 +1,7 @@
 #pragma once
 
 #include <cstddef>
-#include <ios>
-#include <source_location>
+#include "utility/StreamChecker.h"
 
 namespace hw6 {
     class StringReverser;
@@ -35,12 +34,5 @@ public:
     void printString(char* outputStr);
 
 private:
-
-
-    /// @brief method to check whether the passed I/O stream object 
-    /// is failed doing I/O operation or not. If the stream is in a fail state,
-    /// the method prints info to the error stream and stops the program immediately.
-    /// @param stream - object on which the method check if it's in a fail state or not.
-    /// @param loc - object to locate to the call site if the object is in a fail state.
-    void processStreamFailure(const std::ios& stream, std::source_location loc = std::source_location::current());
+    StreamChecker m_streamChecker;
 };

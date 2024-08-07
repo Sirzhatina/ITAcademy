@@ -12,3 +12,6 @@ target_sources(${TARGET}
     PRIVATE
         ${SOURCES}
 )
+
+target_include_directories(${TARGET} PRIVATE ${CMAKE_SOURCE_DIR})
+target_link_libraries(${TARGET} PRIVATE utility)
