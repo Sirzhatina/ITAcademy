@@ -14,6 +14,32 @@ int main(int argc, char* argv[])
     mainTask2();
     std::cout << std::endl;
 
+    constexpr auto SQUARE_MATRIX_SIZE = 3;
+
+    int** mtx = new int*[SQUARE_MATRIX_SIZE];
+
+    for (int i = 0; i < SQUARE_MATRIX_SIZE; ++i) {
+        mtx[i] = new int[SQUARE_MATRIX_SIZE];
+        for (int j = 0; j < SQUARE_MATRIX_SIZE; ++j) {
+            mtx[i][j] = i * j;
+        }
+    }
+    std::cout << "The matrix:\n";
+    for (int i = 0; i < SQUARE_MATRIX_SIZE; ++i) {
+        for (int j = 0; j < SQUARE_MATRIX_SIZE; ++j) {
+            std::cout << mtx[i][j] << " ";
+        }
+        std::cout << '\n';
+    }
+    std::cout << std::endl;
+
+    for (int i = 0; i < SQUARE_MATRIX_SIZE; ++i) {
+        delete mtx[i];
+    }
+
+    delete mtx;
+    mtx = nullptr;
+
     return 0;
 }
 
