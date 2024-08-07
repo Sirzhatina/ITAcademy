@@ -6,6 +6,8 @@ set(SOURCES
     StringReverser.cpp
     VectorGenerator.h
     VectorGenerator.cpp
+    SquareMatrix.h
+    SquareMatrix.cpp
 )
 
 add_executable(${TARGET})
