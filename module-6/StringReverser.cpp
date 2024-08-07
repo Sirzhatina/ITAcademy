@@ -39,9 +39,10 @@ void StringReverser::processStreamFailure(const std::ios& stream, std::source_lo
     if (stream.fail()) {
         std::cerr
             << std::format(
-                "std::cout failed to write.\n"
+                "{} failed to write.\n"
                 "\tLine: {}\n"
                 "\tFile: {}\n,",
+                typeid(stream).name(),
                 loc.line(),
                 loc.file_name()
             ) << std::endl;
