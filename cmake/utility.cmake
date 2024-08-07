@@ -69,9 +69,8 @@ function(add_target_subdir subdir)
         create_cmake_lists(${subdir} ${target_type})
         create_source(${subdir} ${target_type})
 
-        add_subdirectory(${subdir})
-
-
         set(${subdir}_set ON CACHE BOOL "")
     endif()
+
+    add_subdirectory(${subdir})
 endfunction()
