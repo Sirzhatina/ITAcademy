@@ -2,6 +2,9 @@
 
 #include <iostream>
 #include <algorithm>
+
+using namespace hw6;
+
 VectorGenerator::VectorGenerator(std::size_t vecSize) : m_values(vecSize) { }
 
 void VectorGenerator::printVector(const std::string& msg) {

@@ -5,9 +5,13 @@
 
 #include "utility/StreamChecker.h"
 
+namespace hw6 {
+    class VectorGenerator;
+}
+
 /// @brief class used to internally store a vector with the size passed to the constructor.
 /// Vector also can be sorted and printed.
-class VectorGenerator {
+class hw6::VectorGenerator {
 public:
     /// @brief constructor used to initally pass the vector size.
     /// @param vecSize - size that the initialized vector will have

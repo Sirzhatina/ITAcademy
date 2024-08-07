@@ -2,6 +2,8 @@
 #include "utility/StreamChecker.h"
 #include <iostream>
 
+using namespace hw6;
+
 SquareMatrix::SquareMatrix(std::size_t sz) : m_size{ sz } {
 	m_matrix = new int* [m_size];
 	for (int i = 0; i < m_size; ++i) {

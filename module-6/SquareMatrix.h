@@ -3,11 +3,14 @@
 #include <cstddef>
 #include "utility/StreamChecker.h"
 
+namespace hw6 {
+	class SquareMatrix;
+}
 
 /// @brief class for simple manipulation of the square matrix sized with the passed to
 /// the constructor value. Matrix can be filled, printed and cleared. Also, when this matrix
 /// is out of scope, it gets cleared automatically.
-class SquareMatrix {
+class hw6::SquareMatrix {
 public:
 	/// @brief constructor to pass the size of the underlying square matrix.
 	/// @param sz - square matrix size.

@@ -39,13 +39,14 @@ void mainTask1() {
 void mainTask2() {
     StreamChecker strchk{};
 
+
     std::size_t vectorSize = 0;
     std::cout << "Input the size of the vector: ";
     strchk.processStreamFailure(std::cout);
     std::cin >> vectorSize;
     strchk.processStreamFailure(std::cin);
 
-    VectorGenerator vg{ vectorSize };
+    hw6::VectorGenerator vg{ vectorSize };
 
     vg.generate();
 
@@ -55,7 +56,7 @@ void mainTask2() {
 }
 
 void mainTask3() {
-    SquareMatrix mtx{ 3 };
+    hw6::SquareMatrix mtx{ 3 };
     mtx.generate();
     mtx.printMatrix();
 }
