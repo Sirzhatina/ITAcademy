@@ -1,7 +1,9 @@
 
 function(write_if_not_exist subdir file text)
-    if (NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${subdir}/${file})
-        file(WRITE ${subdir}/${file} ${text})
+    set(path "${CMAKE_CURRENT_SOURCE_DIR}/${subdir}")
+
+    if (NOT EXISTS ${path}/${file})
+        file(WRITE ${path}/${file} ${text})
     endif()
 endfunction()
 
@@ -53,17 +55,23 @@ endfunction()
 
 
 function(add_target_subdir subdir)
-    set(target_type ${ARGN})
+    if (NOT DEFINED CACHE{${subdir}_set})
+        set(target_type ${ARGN})
 
-    if ("${target_type}" STREQUAL "")
-        set(target_type "EXEC")
-    endif()
-    if (NOT ${target_type} STREQUAL "EXEC" AND NOT ${target_type} STREQUAL "STATIC" AND NOT ${lib_type} STREQUAL "SHARED")
-        message(FATAL_ERROR "-- Fatal, add_target_subdir: passed library type is neither STATIC nor SHARED")
-    endif()
+        if ("${target_type}" STREQUAL "")
+            set(target_type "EXEC")
+        endif()
+
+        if (NOT ${target_type} STREQUAL "EXEC" AND NOT ${target_type} STREQUAL "STATIC" AND NOT ${target_type} STREQUAL "SHARED")
+            message(FATAL_ERROR "-- Fatal, add_target_subdir: passed target type is neither EXEC nor STATIC nor SHARED")
+        endif()
     
-    create_cmake_lists(${subdir} ${target_type})
-    create_source(${subdir} ${target_type})
+        create_cmake_lists(${subdir} ${target_type})
+        create_source(${subdir} ${target_type})
 
-    add_subdirectory(${subdir})
+        add_subdirectory(${subdir})
+
+
+        set(${subdir}_set ON CACHE BOOL "")
+    endif()
 endfunction()
