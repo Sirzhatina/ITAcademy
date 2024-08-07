@@ -18,9 +18,9 @@ SquareMatrix::~SquareMatrix() {
 void SquareMatrix::clear() {
 	if (m_matrix != nullptr) {
 		for (int i = 0; i < m_size; ++i) {
-			delete m_matrix[i];
+			delete[] m_matrix[i];
 		}
-		delete m_matrix;
+		delete[] m_matrix;
 		m_matrix = nullptr;
 	}
 }

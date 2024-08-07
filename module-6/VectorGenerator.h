@@ -18,7 +18,7 @@ public:
     explicit VectorGenerator(std::size_t vecSize);
     /// @brief method to print to the console the underlying vector values in one line with the whitespace as a delimeter.
     /// If the internal stream object sets in a fail state during the method execution, 
-    /// the program will be stopped immidiately.
+    /// the program will be stopped immediately.
     /// @param msg - message inserted right before the printed vector.
     void printVector(const std::string& msg);
     /// @brief generates the random values for the underlying vector in the range from 1 to 100.
