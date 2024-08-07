@@ -1,5 +1,6 @@
 #include "StringReverser.h"
 #include <iostream>
+#include <format>
 #include "utility/StreamChecker.h"
 #include "VectorGenerator.h"
 #include "SquareMatrix.h"
@@ -7,6 +8,8 @@
 void mainTask1();
 void mainTask2();
 void mainTask3();
+
+static StreamChecker strchk{};
 
 int main(int argc, char* argv[])
 {
@@ -29,11 +32,21 @@ void mainTask1() {
 
     char infoString[NULL_TERMINATED_STRING_SIZE];
 
-    hw6::StringReverser strRev{};
+    std::cout
+        << std::format("Enter the string (up to {} characters, the rest will be left): ", DEFAULT_STRING_SIZE);
+    strchk.processStreamFailure(std::cout);
 
-    strRev.takeUserInput(infoString, DEFAULT_STRING_SIZE);
-    strRev.reverseString(infoString);
-    strRev.printString(infoString);
+    std::cin.getline(infoString, DEFAULT_STRING_SIZE);
+    strchk.processStreamFailure(std::cin);
+
+    hw6::StringReverser strRev{infoString};
+    strRev.reverseString();
+
+    std::cout
+        << "Entered string reversed: "
+        << strRev.getString()
+        << std::endl;
+    strchk.processStreamFailure(std::cout);
 }
 
 void mainTask2() {
