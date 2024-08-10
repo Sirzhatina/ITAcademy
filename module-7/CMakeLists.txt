@@ -2,6 +2,8 @@ set(TARGET module-7)
 
 set(SOURCES
     main.cpp
+    PointedArr.h
+    PointedArr.cpp
 )
 
 add_executable(${TARGET} )

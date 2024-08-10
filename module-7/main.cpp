@@ -1,48 +1,46 @@
 #include <memory>
 #include <iostream>
-#include <format>
-#include <string>
 #include "utils.h"
+#include "PointedArr.h"
+#include "StreamChecker.h"
 
 
-template <class T>
-using UPtr = std::unique_ptr<T>;
-
-UPtr<int[]> initUPtrArray(const std::size_t size) {
-    return std::make_unique<int[]>(size);
-}
-
-UPtr<int[]> inputArray(UPtr<int[]> p, std::size_t sz) {
-    itac::print("Enter {} numbers: ", sz);
+void inputElementsOf(hw7::PointedArr& pa) {
+    itac::print("Enter {} numbers: ", pa.getSize());
     
-    for (std::size_t i = 0; i < sz; ++i) {
-        std::cin >> p[i];
+    for (std::size_t i = 0; i < pa.getSize(); ++i) {
+        std::cin >> pa[i];
     }
 
-    return p;
+    StreamChecker strchk{};
+
+    strchk.processStreamFailure(std::cout);
+    strchk.processStreamFailure(std::cin);
 }
 
 
-UPtr<int[]> printUPtrArray(UPtr<int[]> p, const std::size_t sz) {
+void printElementsOf(const hw7::PointedArr& pa) {
     itac::print("The numbers you've entered:");
-    for (std::size_t i = 0; i < sz; ++i) {
-        itac::print(" {}", p[i]);
+
+    for (std::size_t i = 0; i < pa.getSize(); ++i) {
+        itac::print(" {}", pa[i]);
     }
 
-    return p;
+    StreamChecker strchk{};
+
+    strchk.processStreamFailure(std::cout);
+    strchk.processStreamFailure(std::cin);
 }
 
 int main(int argc, char* argv[])
 {
+    using namespace hw7;
+
     constexpr auto ARRAY_SIZE = 10;
-
-    auto arr = initUPtrArray(ARRAY_SIZE);
-
-    arr = inputArray(std::move(arr), ARRAY_SIZE);
-
-    arr = printUPtrArray(std::move(arr), ARRAY_SIZE);
-
     
+    PointedArr pa{ 10 };
+    inputElementsOf(pa);
+    printElementsOf(pa);
 
     return 0;
 }
