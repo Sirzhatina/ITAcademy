@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Book.h"
 #include "utils.h"
+#include "StreamChecker.h"
 
 using namespace hw8;
 
@@ -23,4 +24,6 @@ void Book::printInfo() const {
 		m_title,
 		m_yearOfPublishing
 	) << std::endl;
+
+	StreamChecker{}.processStreamFailure(std::cout);
 }
