@@ -53,7 +53,11 @@ int main(int argc, char* argv[])
     auto author = readDataFromConsole<std::string>("The author: ");
     auto yOfp = readDataFromConsole<std::uint16_t>("The year of publishing: ");
 
-    hw8::Book b{ title, author, yOfp };
+    hw8::Book b{ 
+        std::move(title), 
+        std::move(author), 
+        yOfp
+    };
 
     b.printInfo();
 
