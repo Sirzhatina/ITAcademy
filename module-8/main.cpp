@@ -4,9 +4,15 @@
 #include "utils.h"
 #include "StreamChecker.h"
 
+/// @brief The concept describing an object able to be read from the standard input.
 template <class T>
 concept Readable = requires (T t) { std::cin >> t; };
 
+/// @brief Helper function for main to minimize code duplication.
+/// The function effectively reads the generic readable object from the
+/// standard input, writing the inviting message before reading, and returns this object.
+/// @param msgBeforeInput - the message being written to the standard output before awaiting of input.
+/// @return some readable object of generic type.
 template <Readable T>
 T readDataFromConsole(const char* msgBeforeInput) {
     T data{};
@@ -21,7 +27,10 @@ T readDataFromConsole(const char* msgBeforeInput) {
 
     return data;
 }
-
+/// @brief std::string specialization of the corresponding primary template function.
+/// This specialization reads the whole line of text before the '\n' character and
+/// stores in inside std::string object. The rest of this spec is the same.
+/// @return read from the standard input string.
 template <>
 std::string readDataFromConsole<std::string>(const char* msgBeforeInput) {
     std::string data;
