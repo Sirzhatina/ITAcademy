@@ -1,5 +1,8 @@
+#include <iostream>
 #include "Book.h"
+#include "utils.h"
 
+using namespace hw8;
 
 Book::Book(std::string title, std::string author, std::uint16_t yearOfPublishing)
 	: m_title{ std::move(title) }

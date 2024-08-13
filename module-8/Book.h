@@ -1,23 +1,24 @@
 #pragma once
 
 #include <string>
-#include <iostream>
-#include "utils.h"
 
-class Book {
-public:
-	Book(std::string title, std::string author, std::uint16_t yearOfPublishing);
+namespace hw8 {
+	class Book {
+	public:
+		Book(std::string title, std::string author, std::uint16_t yearOfPublishing);
 
-	const std::string& getTitle() const;
-	const std::string& getAuthor() const;
+		const std::string& getTitle() const;
+		const std::string& getAuthor() const;
 
-	std::uint16_t getYearOfPublishing() const;
+		std::uint16_t getYearOfPublishing() const;
 
-	void printInfo() const;
+		void printInfo() const;
 
-private:
-	std::string m_title;
-	std::string m_author;
+	private:
+		std::string m_title;
+		std::string m_author;
 
-	std::uint16_t m_yearOfPublishing;
-};
+		std::uint16_t m_yearOfPublishing;
+	};
+}
+
