@@ -2,23 +2,49 @@
 
 #include <iostream>
 #include "utils.h"
+#include "StreamChecker.h"
+
+template <class T>
+concept Readable = requires (T t) { std::cin >> t; };
+
+template <Readable T>
+T readDataFromConsole(const char* msgBeforeInput) {
+    T data{};
+
+    std::cout << msgBeforeInput;
+    std::cin >> data;
+
+    StreamChecker check{};
+
+    check.processStreamFailure(std::cout);
+    check.processStreamFailure(std::cin);
+
+    return data;
+}
+
+template <>
+std::string readDataFromConsole<std::string>(const char* msgBeforeInput) {
+    std::string data;
+
+    std::cout << msgBeforeInput;
+    std::getline(std::cin, data);
+
+    StreamChecker check{};
+
+    check.processStreamFailure(std::cout);
+    check.processStreamFailure(std::cin);
+
+    return data;
+}
 
 
 int main(int argc, char* argv[])
 {
-    std::string author, title;
-    std::uint16_t yearOfPublishing;
+    auto title = readDataFromConsole<std::string>("The title: ");
+    auto author = readDataFromConsole<std::string>("The author: ");
+    auto yOfp = readDataFromConsole<std::uint16_t>("The year of publishing: ");
 
-    std::cout << "Enter the book data.\nThe title: ";
-    std::getline(std::cin, title);
-
-    std::cout << "The author: ";
-    std::getline(std::cin, author);
-
-    std::cout << "The year of publishing: ";
-    std::cin >> yearOfPublishing;
-
-    hw8::Book b{ title, author, yearOfPublishing };
+    hw8::Book b{ title, author, yOfp };
 
     b.printInfo();
 
