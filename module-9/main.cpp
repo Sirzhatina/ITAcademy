@@ -35,8 +35,12 @@ int main(int argc, char* argv[])
     megaForest.wind();
 
     megaForest.cutAll();
-    std::cout << "Forest after cutting all:\n";
+    std::cout << "Forest after cutting all:\n" << std::endl;
     megaForest.wind();
+
+    if (auto ptr = megaForest.growUp().lock(); !ptr) {
+        std::cout << "The tree has really not been created because the forest is empty :)";
+    }
 
     return 0;
 }
