@@ -2,6 +2,8 @@ set(TARGET module-9)
 
 set(SOURCES
     main.cpp
+    Tree.h
+    Tree.cpp
     TreeKind.h
     TreeKind.cpp
 )
