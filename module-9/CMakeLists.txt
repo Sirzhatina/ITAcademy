@@ -2,6 +2,8 @@ set(TARGET module-9)
 
 set(SOURCES
     main.cpp
+    TreeKind.h
+    TreeKind.cpp
 )
 
 add_executable(${TARGET} )
