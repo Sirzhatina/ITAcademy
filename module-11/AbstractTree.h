@@ -27,7 +27,11 @@ public:														   \
 	~TreeName() { --m_kindCounter; }						   \
 															   \
 	void wind() const override {							   \
-		itac::print("Calling the wind() of {}.\n", #TreeName); \
+		itac::print(										   \
+			"Calling the wind() of {}; The counter is: {}\n",  \
+			#TreeName,										   \
+			m_##TreeName##Id								   \
+		);													   \
 		AbstractTree::wind();								   \
 	}														   \
 															   \
