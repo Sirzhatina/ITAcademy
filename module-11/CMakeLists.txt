@@ -3,9 +3,7 @@ set(TARGET module-11)
 set(SOURCES
     main.cpp
     AbstractTree.h
-    Oak.h
-    Maple.h
-    Pine.h
+    AbstractTree.cpp
 )
 
 add_executable(${TARGET} )

@@ -4,24 +4,39 @@
 #include "utils.h"
 
 class AbstractTree {
-	static inline std::size_t treeCounter = 0;
 public:
-	AbstractTree() : m_counter{++treeCounter} { }
-	virtual ~AbstractTree() { --treeCounter; }
+	AbstractTree() = default;
+	virtual ~AbstractTree() = default;
 
 	[[nodiscard]]
-	hw9::TreeKind getKind() const { return m_kind; }
+	hw9::TreeKind getKind() const;
 
 	virtual void wind() const = 0;
 
 protected:
-	AbstractTree(hw9::TreeKind tk) : m_kind{ tk } { }
+	AbstractTree(hw9::TreeKind tk);
 private:
 	hw9::TreeKind m_kind{ hw9::TreeKind::Unknown };
-
-	std::size_t m_counter{ 0 };
 };
 
-void AbstractTree::wind() const {
-	itac::print("Tree kind: {}; Tree counter: {}", hw9::asString(m_kind), m_counter) << std::endl;
-}
+#define DefTree(TreeName)									   \
+class TreeName : public AbstractTree {						   \
+	static inline std::size_t m_kindCounter = 0;			   \
+public:														   \
+	TreeName() : AbstractTree{ hw9::TreeKind::##TreeName } { } \
+	~TreeName() { --m_kindCounter; }						   \
+															   \
+	void wind() const override {							   \
+		itac::print("Calling the wind() of {}.\n", #TreeName); \
+		AbstractTree::wind();								   \
+	}														   \
+															   \
+private:													   \
+		std::size_t m_##TreeName##Id{ ++m_kindCounter };	   \
+};
+
+DefTree(Pine)
+DefTree(Oak)
+DefTree(Maple)
+
+#undef DefTree // undefined to prevent misproper usage
