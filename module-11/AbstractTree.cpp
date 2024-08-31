@@ -7,5 +7,5 @@ AbstractTree::AbstractTree(hw9::TreeKind tk) : m_kind{ tk } { }
 hw9::TreeKind AbstractTree::getKind() const { return m_kind; }
 
 void AbstractTree::wind() const {
-	itac::print("The tree kind: {}; ", hw9::asString(m_kind));
+	itac::print("The tree kind: {}; ", hw9::asString(m_kind)) << std::endl;
 }
