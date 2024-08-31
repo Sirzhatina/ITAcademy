@@ -38,5 +38,6 @@ private:													   \
 DefTree(Pine)
 DefTree(Oak)
 DefTree(Maple)
+DefTree(Sequoia)
 
 #undef DefTree // undefined to prevent misproper usage
