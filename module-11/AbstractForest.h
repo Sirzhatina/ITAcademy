@@ -46,3 +46,8 @@ protected:															\
 private:															\
 	static bool is##ForestType(const AbstractTree& at);				\
 };
+
+DefForest(Coniferous)
+DefForest(Deciduous)
+
+#undef DefForest
