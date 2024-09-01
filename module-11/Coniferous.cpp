@@ -2,6 +2,8 @@
 #include "AbstractTree.h"
 
 
-bool Coniferous::isConiferous(const AbstractTree& at) {
-	return typeid(at) == typeid(Pine) || typeid(at) == typeid(Sequoia);
+namespace hw11 {
+	bool Coniferous::isConiferous(const AbstractTree& at) {
+		return typeid(at) == typeid(Pine) || typeid(at) == typeid(Sequoia);
+	}
 }

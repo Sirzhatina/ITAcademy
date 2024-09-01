@@ -4,6 +4,8 @@
 
 int main(int argc, char* argv[])
 {
+    using namespace hw11;
+
     std::unique_ptr<AbstractForest> conina = std::make_unique<Coniferous>();
     // should be ok
     bool coniSuccess = conina->growUp(
