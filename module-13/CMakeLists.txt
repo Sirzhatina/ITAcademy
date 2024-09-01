@@ -2,6 +2,8 @@ set(TARGET module-13)
 
 set(SOURCES
     main.cpp
+    ICar.h
+    ServiceStation.h
 )
 
 add_executable(${TARGET} )
