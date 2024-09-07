@@ -12,7 +12,6 @@ namespace hw14 {
         int mainFlow();
 
     private:
-
         void printNumbers(const std::string& msg, std::ranges::view auto vecView) const;
         void printSum() const;
 
