@@ -4,9 +4,10 @@
 #include <vector>
 #include <type_traits>
 
-class AbstractTree;
 
 namespace hw11 {
+	class AbstractTree;
+
 	/// @brief class representing the forest that can collect trees, get new trees grown up
 	/// inside it and show info about every single tree in the forest.
 	class AbstractForest {
