@@ -1,7 +1,5 @@
 set(TARGET module-15)
 
-find_package(Qt6 REQUIRED)
-
 set(SOURCES
     main.cpp
 )
@@ -13,4 +11,5 @@ target_sources(${TARGET}
         ${SOURCES}
 )
 
-target_link_libraries(${TARGET} PRIVATE qt::qt)
+target_link_libraries(${TARGET} PRIVATE Qt6::Widgets)
+set_target_properties(${TARGET} PROPERTIES AUTOMOC ON)
