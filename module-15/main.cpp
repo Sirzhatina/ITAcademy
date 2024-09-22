@@ -6,17 +6,50 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QComboBox>
+#include <QMessageBox>
 #include <map>
 
 class UserArea : public QWidget {
 public:
+    Q_OBJECT
+public:
     UserArea(QMainWindow* parent = nullptr) : QWidget(parent) {
         initUI();
 
+        connect(m_button, &QPushButton::clicked, [this]() { m_resultLine->setText(convertCurrency()); });
     }
 
 private:
     void initUI();
+    QString convertCurrency() {
+        if (auto lineEdit = dynamic_cast<QLineEdit*>(m_convertControls["Input"]); lineEdit) {
+            const auto inputText = lineEdit->text();
+
+            if (!inputText.isEmpty()) {
+                return convertImpl(inputText);
+            }
+        }
+        return "";
+    }
+    QString convertImpl(const QString& curr) {
+        auto cb = getComboBox();
+        if (!cb) {
+            return "";
+        }
+
+        bool ok = false;
+        double res = curr.toDouble(&ok);
+        if (!ok) {
+            m_errorMsg->show();
+            return "";
+        }
+
+        res *= (cb->currentIndex() + 1) * 100;
+        return QVariant(res).toString();
+    }
+
+
+    QComboBox* getComboBox() { return dynamic_cast<QComboBox*>(m_convertControls["Currency"]); }
 
 
     QVBoxLayout m_topLayout{ this };
@@ -29,6 +62,14 @@ private:
 
     QPushButton* m_button{ new QPushButton{this} };
     QLineEdit* m_resultLine{ new QLineEdit{this} };
+
+    QMessageBox* m_errorMsg{ new QMessageBox{
+                        QMessageBox::Critical,
+                        "Error!",
+                        "Invalid input!",
+                        QMessageBox::Ok,
+                        this 
+    }};
 };
 
 class MainWindow : public QMainWindow {
@@ -64,7 +105,7 @@ void UserArea::initUI() {
 
     }
 
-    if (auto comboBox = dynamic_cast<QComboBox*>(m_convertControls["Currency"]); comboBox) {
+    if (auto comboBox = getComboBox(); comboBox) {
         comboBox->addItems({ "USA", "RUB", "EUR" });
     }
 
@@ -87,3 +128,5 @@ QSize MainWindow::getInitialSize() {
     };
     return targetSize;
 }
+
+#include "main.moc"
