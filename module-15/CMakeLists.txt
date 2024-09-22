@@ -2,6 +2,10 @@ set(TARGET module-15)
 
 set(SOURCES
     main.cpp
+    UserArea.h
+    UserArea.cpp
+    MainWindow.h
+    MainWindow.cpp
 )
 
 add_executable(${TARGET} )
