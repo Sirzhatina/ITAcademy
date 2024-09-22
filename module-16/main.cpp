@@ -1,57 +1,10 @@
-#include <vector>
-#include <random>
 #include <algorithm>
-#include <iostream>
-#include <iterator>
 #include <array>
-#include <format>
 #include <forward_list>
 #include <list>
-
-static std::mt19937 mt{ std::random_device{}() };
-
-class Generator {
-public:
-    Generator(int min, int max): m_distr{min, max} { }
-
-    template <template <class> class Container>
-    Container<int> generate(std::size_t size) {
-        Container<int> result;
-        result.resize(size);
-
-        std::ranges::generate(result, [this]() { return m_distr(mt); });
-
-        return result;
-    }
-
-private:
-    std::uniform_int_distribution<int> m_distr;
-};
-
-struct Data {
-    char id;
-    int value;
-
-    bool operator<(const Data& rhs) const {
-        return value < rhs.value;
-    }
-};
-
-template <class C>
-void print(const std::string& msg, const C& c) {
-    std::cout << msg;
-    std::ranges::copy(c, std::ostream_iterator<typename C::value_type>{std::cout, " "});
-    std::cout << std::endl;
-}
-
-template <int size>
-void printData(const std::string& msg, const std::array<Data, size>& d) {
-    std::cout << msg << '\n';
-    for (const auto& [id, value] : d) {
-        std::cout << std::format("({}; {})\n", id, value);
-    }
-    std::cout << std::endl;
-}
+#include "Generator.h"
+#include "Data.h"
+#include "Print.h"
 
 int main(int argc, char* argv[])
 {
