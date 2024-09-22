@@ -1,5 +1,8 @@
 #pragma once
 
+#include <stdexcept>
+#include <string>
+
 namespace hw14 {
     class NegativeRadius : public std::logic_error {
     public:
