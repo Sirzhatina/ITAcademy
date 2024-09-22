@@ -1,7 +1,31 @@
 #include "UserArea.h"
 
+#include <QLineEdit>
+#include <QPushButton>
+#include <QMessageBox>
+#include <QMainWindow>
+#include <QComboBox>
+#include <QVBoxLayout>
+#include <QFormLayout>
 
-UserArea::UserArea(QMainWindow* parent) : QWidget(parent) {
+UserArea::UserArea(QMainWindow* parent) 
+    : QWidget(parent)
+    , m_topLayout{ new QVBoxLayout{this} }
+    , m_formLayout{ new QFormLayout{}  }
+    , m_convertControls{ 
+        {"Input",    new QLineEdit{this}},
+        {"Currency", new QComboBox{this}} 
+    }
+    , m_button{     new QPushButton{this} }
+    , m_resultLine{ new QLineEdit{this} }
+    , m_errorMsg{   new QMessageBox{
+        QMessageBox::Critical,
+        "Error!",
+        "Invalid input!",
+        QMessageBox::Ok,
+        this
+    }}
+{
     initUI();
 
     connect(m_button, &QPushButton::clicked, [this]() { m_resultLine->setText(convertCurrency()); });
@@ -10,13 +34,13 @@ UserArea::UserArea(QMainWindow* parent) : QWidget(parent) {
 void UserArea::initUI() {
     m_button->setText("Convert");
 
-    m_topLayout.addLayout(&m_formLayout);
-    m_topLayout.addWidget(m_button);
-    m_topLayout.addWidget(m_resultLine);
+    m_topLayout->addLayout(m_formLayout);
+    m_topLayout->addWidget(m_button);
+    m_topLayout->addWidget(m_resultLine);
 
 
     for (const auto& [k, v] : m_convertControls) {
-        m_formLayout.addRow(k, v);
+        m_formLayout->addRow(k, v);
 
     }
 

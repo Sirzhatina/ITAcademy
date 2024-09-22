@@ -1,7 +1,10 @@
 #include "MainWindow.h"
+#include "UserArea.h"
 #include <QScreen>
 
-MainWindow::MainWindow() {
+MainWindow::MainWindow()
+    : m_userArea{ new UserArea{this} }
+{
     setWindowTitle("Currency converter");
 
     setFixedSize(getInitialSize());

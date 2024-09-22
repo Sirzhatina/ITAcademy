@@ -1,14 +1,14 @@
 #pragma once
 
 #include <QWidget>
-#include <QComboBox>
-#include <QVBoxLayout>
-#include <QFormLayout>
-#include <QLineEdit>
-#include <QPushButton>
-#include <QMessageBox>
-#include <QMainWindow>
 
+class QMainWindow;
+class QLineEdit;
+class QPushButton;
+class QMessageBox;
+class QComboBox;
+class QVBoxLayout;
+class QFormLayout;
 
 class UserArea : public QWidget {
 public:
@@ -25,22 +25,13 @@ private:
 
     QComboBox* getComboBox();
 
-    QVBoxLayout m_topLayout{ this };
-    QFormLayout m_formLayout;
+    QVBoxLayout* m_topLayout;
+    QFormLayout* m_formLayout;
 
-    std::map<QString, QWidget*> m_convertControls{
-        {"Input", new QLineEdit{this}},
-        {"Currency", new QComboBox{this}}
-    };
+    std::map<QString, QWidget*> m_convertControls;
 
-    QPushButton* m_button{ new QPushButton{this} };
-    QLineEdit* m_resultLine{ new QLineEdit{this} };
+    QPushButton* m_button;
+    QLineEdit* m_resultLine;
 
-    QMessageBox* m_errorMsg{ new QMessageBox{
-                        QMessageBox::Critical,
-                        "Error!",
-                        "Invalid input!",
-                        QMessageBox::Ok,
-                        this
-    } };
+    QMessageBox* m_errorMsg;
 };

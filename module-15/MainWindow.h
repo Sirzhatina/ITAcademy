@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QMainWindow>
-#include "UserArea.h"
 
 class MainWindow : public QMainWindow {
 public:
@@ -9,5 +8,6 @@ public:
 
 private:
     QSize getInitialSize();
-    QWidget* m_userArea{ new UserArea{this} };
+
+    QWidget* m_userArea;
 };
