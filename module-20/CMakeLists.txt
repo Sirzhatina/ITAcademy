@@ -1,6 +1,8 @@
 set(TARGET module-20)
 
 set(SOURCES
+    DirectoryContent.h
+    DirectoryContent.cpp
     main.cpp
 )
 

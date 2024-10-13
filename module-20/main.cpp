@@ -1,49 +1,11 @@
 #include <iostream>
 #include <filesystem> 
 #include <string>
+#include "DirectoryContent.h"
 
 namespace fs = std::filesystem;
 
-std::string input(const std::string& msg) {
-    std::cout << msg;
-
-    std::string str;
-    std::getline(std::cin, str);
-
-    return str;
-}
-
-class DirectoryContent {
-public:
-    struct Data {
-        std::string m_folderName;
-
-        int m_filesCount{ 0 };
-        int m_foldersCount{ 0 };
-
-        std::vector<std::string> m_exeFiles;
-    };
-public:
-    DirectoryContent() = default;
-
-    Data inspectFolder(const std::string& folder) {
-        Data d{};
-        d.m_folderName = folder;
-
-        for (const auto& entry : fs::directory_iterator(folder)) {
-            if (fs::is_directory(entry)) {
-                d.m_foldersCount++;
-            }
-            else if (fs::is_regular_file(entry)) {
-                d.m_filesCount++;
-                if (entry.path().extension() == ".exe") {
-                    d.m_exeFiles.push_back(entry.path().filename().string());
-                }
-            }
-        }
-        return d;
-    }
-};
+std::string input(const std::string& msg);
 
 int main() {
     std::string folderName = input("Enter folder name: ");
@@ -70,4 +32,13 @@ int main() {
     }
 
     return 0;
+}
+
+std::string input(const std::string& msg) {
+    std::cout << msg;
+
+    std::string str;
+    std::getline(std::cin, str);
+
+    return str;
 }
