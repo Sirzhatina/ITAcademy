@@ -10,3 +10,5 @@ target_sources(${TARGET}
     PRIVATE
         ${SOURCES}
 )
+
+target_link_libraries(${TARGET} PRIVATE utility)
