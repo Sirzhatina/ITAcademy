@@ -2,6 +2,8 @@ set(TARGET module-18)
 
 set(SOURCES
     main.cpp
+    Order.h
+    Order.cpp
 )
 
 add_executable(${TARGET} )
