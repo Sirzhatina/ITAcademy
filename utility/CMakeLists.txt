@@ -1,6 +1,7 @@
 set(TARGET utility)
 
 set(SOURCES
+    Generator.h
     StreamChecker.cpp
     StreamChecker.h
     utils.h
