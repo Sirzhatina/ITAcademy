@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 
 project(Homework LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -27,3 +27,4 @@ add_target_subdir(module-14)
 add_target_subdir(module-15)
 add_target_subdir(module-16)
 add_target_subdir(module-18)
+add_target_subdir(module-19)
